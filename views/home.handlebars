@@ -1,8 +1,114 @@
-<section>
-    <h1>História das linguagens de programação</h1>
-    <p>A programação de computadores é a própria base da era digital em que vivemos hoje. Sempre que você gosta de um post nas redes sociais, enviar um e-mail ou colocar um alarme no seu telefone, uma linguagem de programação está trabalhando nos bastidores - puxando os cordelinhos.</p>
+<div class="nav container w-75 mt-1 text-center p-1">
+  <div class="row ms-4">
+    <div class="col"><a href="#Bootstrap">Bootstrap</a></div>
+    <div class="col"><a href="#Git">Git</a></div>
+    <div class="col"><a href="#Linux">Linux</a></div>
+    <div class="col"><a href="#Node">NODE.JS</a></div>
 
-<p>Mas por onde começou tudo isto? E o que impulsionou o seu crescimento na indústria líder que existe hoje? Acima de tudo, por que conhecer a história das linguagens de programação é importante para contratação de desenvolvedores?</p>
+  </div>
+  <a class="topo" href="#"><i class="bi bi-arrow-up-circle-fill"></i></a>
+</div>
 
-<p>Junte-se a nós, ao embarcarmos num tour pela história das linguagens de programação. Esta retrospectiva irá demonstrar o quanto a programação de computadores se desenvolveu ao longo dos anos. Vai levá-lo de volta das primeiras linguagens e códigos de máquina complicados para uma linguagem sofisticada, legível pelo homem, que alimenta as nossas tecnologias favoritas de hoje.</p>
-</section>
+<form class="my-3 px-3" action="/add" method="post">
+  <div class="row align-items-center">
+    <div class="col-auto">
+      <label class="form-label" for="titulo">Título</label>
+      <input class="form-control" type="text" name="titulo" />
+    </div>
+    <div class="col-auto">
+      <label class="form-label" for="subtitulo">Sub-Título</label>
+      <input class="form-control" type="text" name="subtitulo" />
+    </div>
+    <div class="col">
+      <label class="form-label" for="conteudo">Conteúdo</label>
+      <input class="form-control" type="text" name="conteudo" />
+    </div>
+  </div>
+  <button class="btn btn-primary mt-2" type="submit">Adicionar</button>
+</form>
+
+<div id="Node" class="p-2">
+  <h3 class="text-decoration-underline">Node.JS</h3>
+  <dl>
+    <dt>Banco de dados</dt>
+    <dd>- SQLite, lowdb</dd>
+
+    <dt>pm2 - Roda várias APIs ao mesmo tempo. Inicia com pm2</dt>
+    <dd><span>- start index.js --name=nome-da-api:</span>
+      inicia a API no arquivo especificado</dd>
+    <dd><span>- list:</span> Lista as APIs em execução</dd>
+    <dd><span>- stop all:</span> para todas as APIs</dd>
+    <dd><span>- stop nome-da-API:</span> para só uma API</dd>
+    <dd><span>- del nome-da-API:</span> para a API e remove da lista</dd>
+    <dd><span>- restart nome-da-API:</span> reinicia a API</dd>
+  </dl>
+</div>
+<hr />
+
+<div id="Linux" class="p-2">
+  <h3 class="text-decoration-underline"><a href="#">Linux</a></h3>
+  <dl>
+    <dt>Comandos</dt>
+    <dd><span>- rm -r nome-da-pasta:</span>
+      remove uma pasta e todo seu conteúdo</dd>
+    <dd><span>- nano:</span> Editor de texto</dd>
+    <dd><span>- ls -a:</span> mostra pastas e arquivos ocultos</dd>
+    <dd><span>- touch nome-do-arquivo:</span> cria um arquivo</dd>
+    <dd><span>- cat nome-do-arquivo:</span> lê um arquivo de texto</dd>
+
+    <dt>Vim</dt>
+    <dd><span>- esc + :q!:</span> encerra o vim sem salvar</dd>
+    <dd><span>- esq + :wq!:</span> encerra o vim e salva as alterações</dd>
+  </dl>
+</div>
+<hr />
+
+<div id="Bootstrap" class="p-2">
+  <h3 class="text-decoration-underline">Bootstrap</h3>
+  <dl>
+    <dt>Texto</dt>
+    <dd><span>- fw-bold:</span> deixa em negrito (fonte weight)</dd>
+    <dd><span>- text-center:</span> centraliza texto</dd>
+
+    <dt>Espaços</dt>
+    <dd><span>- mt-1:</span>
+      margem top (ms-inicio, me-fim, mb-baixo, mx-lados, my-cima e baixo)</dd>
+    <dd><span>- p-1:</span> padding</dd>
+    <dd><span>- w-25:</span> define 25% da largura do elemento pai</dd>
+
+    <dt>Grid</dt>
+    <dd><span>- row:</span> para linhas</dd>
+    <dd><span>- col:</span> para colunas</dd>
+  </dl>
+</div>
+<hr />
+
+<div id="Git" class="p-2">
+  <h3 class="text-decoration-underline">Git</h3>
+  <dl>
+    <dt>Instalar Git</dt>
+    <dd><span>- sudo yum install git-core:</span> Fedora</dd>
+    <dd><span>- sudo apt-get install git:</span> Ubuntu</dd>
+
+    <dt>Comandos: inicia com git</dt>
+    <dd><span>- clone endereço-do-repositorio:</span> clona um repositório</dd>
+    <dd><span>- help comando:</span> para ver os comandos</dd>
+    <dd><span>- init:</span>
+      Isso cria um novo subdiretório chamado .git que contem todos os arquivos
+      necessários de seu repositório — um esqueleto de repositório Git. Neste
+      ponto, nada em seu projeto é monitorado.</dd>
+    <dd><span>- config --global user.name "nome":</span>
+      configura no arquivo global do git o nome do usuário que faz os commits</dd>
+    <dd><span>- config --global user.email "email":</span>
+      configura no arquivo global do git o email do usuário que faz os commits</dd>
+    <dd><span>- status:</span>
+      mostra quais arquivos foram dados commits e quais não foram</dd>
+    <dd><span>- add .:</span> faz todos os arquivos serem monitorados</dd>
+    <dd><span>- commit -m "comentário":</span>
+      salva as alterações que serão enviadas</dd>
+    <dd><span>- diff nome-do-arquivo:</span>
+      mostra o que foi alterado no arquivo</dd>
+
+  </dl>
+</div>
+<hr />
