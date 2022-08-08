@@ -3,9 +3,6 @@
     {{#each list}}
       <div class="col"><a href="#{{titulo}}">{{titulo}}</a></div>
     {{/each}}
-    {{! <div class="col"><a href="#Git">Git</a></div>
-    <div class="col"><a href="#Linux">Linux</a></div>
-    <div class="col"><a href="#Node">NODE.JS</a></div> }}
 
   </div>
   <a class="topo" href="#"><i class="bi bi-arrow-up-circle-fill"></i></a>
@@ -41,18 +38,17 @@
 
 {{#each list}}
   <div class="p-2">
-    <h3
-      class="text-decoration-underline"
-      id="{{titulo}}"
-      onclick="edit({{titulo}})"
-    ><a href="#">{{titulo}}</a></h3>
+    <h3 class="text-decoration-underline" id="{{titulo}}"><a
+        onclick="edit('{{titulo}}')"
+        href="#"
+      >{{titulo}}</a></h3>
     <dl>
       {{#each subtitulos}}
         <dt>{{subtitulo}}</dt>
         {{#each items}}
           <dd><span>- {{item}}:</span>
             {{text}}
-            <a href="/delete/{{titulo}}/{{item}}">
+            <a href="/delete/{{titulo}}/{{subtitulo}}/{{item}}">
               <i class="bi bi-trash3-fill"></i>
             </a>
           </dd>

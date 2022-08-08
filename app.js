@@ -16,33 +16,20 @@ app.use(express.static("public"));
 
 app.get("/", async (req, res) => {
   const list = await Insert.find({}).lean();
-  const subs = [];
-  let c = 0;
-
-  // for (const it of list) {
-  //   console.log(it.titulo);
-  //   for (const it2 of it.subtitulos) {
-  //     console.log(it2.subtitulo);
-  //   }
-  // }
 
   res.render("home", { list });
 });
 
 app.post("/add", async (req, res) => {
   const { titulo, subtitulo, item, text } = req.body;
-  let subs = [];
 
   const findTitulo = await Insert.findOne({ titulo: titulo });
 
   if (!findTitulo) {
     await Insert.create({
       titulo,
-      subtitulos: { subtitulo, items: [{ item, text }] },
+      subtitulos: { subtitulo, items: [{ item, text, titulo, subtitulo }] },
     });
-
-    // const data = await Insert.findOne({ titulo: titulo });
-    // console.log(data);
   } else if (findTitulo) {
     const items = [];
     const subT = [];
@@ -56,7 +43,7 @@ app.post("/add", async (req, res) => {
       }
     });
 
-    items.push({ item, text });
+    items.push({ item, text, titulo, subtitulo });
 
     if (subT.includes(subtitulo)) {
       await Insert.updateOne(
@@ -74,7 +61,7 @@ app.post("/add", async (req, res) => {
           $push: {
             subtitulos: {
               subtitulo,
-              items: [{ item, text }],
+              items: [{ item, text, titulo, subtitulo }],
             },
           },
         }
@@ -85,12 +72,28 @@ app.post("/add", async (req, res) => {
   res.redirect("/");
 });
 
-app.get("/delete/:titulo/:item", async (req, res) => {
-  const { titulo, item } = req.params;
+app.get("/delete/:titulo/:subtitulo/:item", async (req, res) => {
+  const { titulo, item, subtitulo } = req.params;
+  const findTitulo = await Insert.findOne({ titulo: titulo });
+  const items = [];
 
-  await Insert.findOneAndUpdate(
-    { titulo: titulo, "items.item": item },
-    { $pull: { "items.$.item": "foi" } }
+  findTitulo.subtitulos.forEach((list) => {
+    if (list.subtitulo === subtitulo) {
+      for (const it of list.items) {
+        if (it.item !== item) {
+          items.push(it);
+        }
+      }
+    }
+  });
+
+  await Insert.updateOne(
+    { titulo: findTitulo.titulo, "subtitulos.subtitulo": subtitulo },
+    {
+      $set: {
+        "subtitulos.$.items": items,
+      },
+    }
   );
 
   res.redirect("/");
