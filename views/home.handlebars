@@ -1,9 +1,11 @@
 <div class="nav container w-75 mt-1 text-center p-1">
   <div class="row ms-4">
-    <div class="col"><a href="#Bootstrap">Bootstrap</a></div>
-    <div class="col"><a href="#Git">Git</a></div>
+    {{#each list}}
+      <div class="col"><a href="#{{titulo}}">{{titulo}}</a></div>
+    {{/each}}
+    {{! <div class="col"><a href="#Git">Git</a></div>
     <div class="col"><a href="#Linux">Linux</a></div>
-    <div class="col"><a href="#Node">NODE.JS</a></div>
+    <div class="col"><a href="#Node">NODE.JS</a></div> }}
 
   </div>
   <a class="topo" href="#"><i class="bi bi-arrow-up-circle-fill"></i></a>
@@ -13,21 +15,55 @@
   <div class="row align-items-center">
     <div class="col-auto">
       <label class="form-label" for="titulo">Título</label>
-      <input class="form-control" type="text" name="titulo" />
+      <input
+        class="form-control"
+        type="text"
+        name="titulo"
+        id="insTitulo"
+        required
+      />
     </div>
     <div class="col-auto">
       <label class="form-label" for="subtitulo">Sub-Título</label>
       <input class="form-control" type="text" name="subtitulo" />
     </div>
+    <div class="col-auto">
+      <label class="form-label" for="item">Item</label>
+      <input class="form-control" type="text" name="item" />
+    </div>
     <div class="col">
-      <label class="form-label" for="conteudo">Conteúdo</label>
-      <input class="form-control" type="text" name="conteudo" />
+      <label class="form-label" for="text">Texto</label>
+      <input class="form-control" type="text" name="text" />
     </div>
   </div>
   <button class="btn btn-primary mt-2" type="submit">Adicionar</button>
 </form>
 
-<div id="Node" class="p-2">
+{{#each list}}
+  <div class="p-2">
+    <h3
+      class="text-decoration-underline"
+      id="{{titulo}}"
+      onclick="edit({{titulo}})"
+    ><a href="#">{{titulo}}</a></h3>
+    <dl>
+      {{#each subtitulos}}
+        <dt>{{subtitulo}}</dt>
+        {{#each items}}
+          <dd><span>- {{item}}:</span>
+            {{text}}
+            <a href="/delete/{{titulo}}/{{item}}">
+              <i class="bi bi-trash3-fill"></i>
+            </a>
+          </dd>
+        {{/each}}
+      {{/each}}
+    </dl>
+  </div>
+  <hr />
+{{/each}}
+
+{{! <div id="Node2" class="p-2">
   <h3 class="text-decoration-underline">Node.JS</h3>
   <dl>
     <dt>Banco de dados</dt>
@@ -45,7 +81,7 @@
 </div>
 <hr />
 
-<div id="Linux" class="p-2">
+<div id="Linux2" class="p-2">
   <h3 class="text-decoration-underline"><a href="#">Linux</a></h3>
   <dl>
     <dt>Comandos</dt>
@@ -111,4 +147,4 @@
 
   </dl>
 </div>
-<hr />
+<hr /> }}
