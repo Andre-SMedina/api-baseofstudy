@@ -4,6 +4,7 @@ const hbs = exphbs.create({ partialsDir: ["views/partials"] });
 const app = express();
 const conn = require("./database/connect");
 const Insert = require("./models/insert");
+const port = 3000;
 
 conn();
 app.engine("handlebars", hbs.engine);
@@ -99,4 +100,6 @@ app.get("/delete/:titulo/:subtitulo/:item", async (req, res) => {
   res.redirect("/");
 });
 
-app.listen(3002);
+app.listen(port, () => {
+  console.log("porta " + port);
+});
