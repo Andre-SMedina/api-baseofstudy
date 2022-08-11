@@ -16,7 +16,7 @@ app.use(express.static("public"));
 // ROTAS----------------------------------
 
 app.get("/", async (req, res) => {
-  const list = await Insert.find({}).lean();
+  const list = await Insert.find({}, null, { sort: { titulo: 1 } }).lean();
 
   res.render("home", { list });
 });
@@ -101,5 +101,5 @@ app.get("/delete/:titulo/:subtitulo/:item", async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log("porta " + port);
+  console.log(`Acesse: http://localhost:${port}`);
 });
